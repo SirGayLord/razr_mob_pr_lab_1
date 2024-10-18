@@ -1,34 +1,40 @@
-Лабораторная работа №1. Создание Activity и передача параметров между ними.
-Выполнил: Кастырин Сергей
-Язык программирования: Java
-Что делает приложение?
-Этот проект демонстрирует простой пример перехода между двумя экранами (Activity) в Android-приложении. Чтобы запустить проект можно прочитать "Как запустить"
+# Лабораторная работа №1. Создание Activity и передача параметров между ними.
+* Выполнил: Кастырин Сергей
+* Язык программирования: Java
 
-Функциональность:
+# Что делает приложение?
+Этот проект демонстрирует простой пример перехода между двумя экранами (Activity) в Android-приложении. 
+Чтобы запустить проект можно прочитать ["Как запустить"](#как-запустить)
+
+# Функциональность:
 Приложение содержит две Activity:
+  * MainActivity: 
+    На первом экране находится кнопка "Перейти к Activity 2".
+    
 
-MainActivity: На этом экране находится кнопка "Перейти к Activity 2".
+  * SecondActivity:
+     На втором экране отображается текст "Переданный параметр: Кастырин", где Кастырин* - это строка, переданная из MainActivity.
 
 
-SecondActivity: На этом экране отображается текст "Переданный параметр: Кастырин", где Кастырин* - это строка, переданная из MainActivity.
+# Дополнительные сведения:
+* Проект использует стандартные компоненты Android: Activity, Intent, Button, TextView.
+* Переход между Activity осуществляется с помощью Intent - объекта, который содержит информацию о том, какую Activity нужно запустить.
+* Параметр передается с помощью putExtra("Фамилия", "Кастырин"), а затем извлекается в SecondActivity с помощью getIntent().getStringExtra("Фамилия").
 
-Дополнительные сведения:
-Проект использует стандартные компоненты Android: Activity, Intent, Button, TextView.
-Переход между Activity осуществляется с помощью Intent - объекта, который содержит информацию о том, какую Activity нужно запустить.
-Параметр передается с помощью putExtra("Фамилия", "Кастырин"), а затем извлекается в SecondActivity с помощью getIntent().getStringExtra("Фамилия").
-Как запустить:
-Импортируйте проект:
-Загрузите или клонируйте этот репозиторий.
-Откройте проект в Android Studio.
-Запустите приложение:
-Нажмите кнопку "Run" в Android Studio.
-Выберите эмулятор или устройство для запуска приложения.
-Нажмите кнопку:
-На экране MainActivity нажмите кнопку "Перейти к Activity 2".
-Вы перейдете на экран SecondActivity, где увидите фамилию Кастырин, переданную из MainActivity.
-Код:
-MainActivity.java:
-package com.example.myapplication;
+# Как запустить:
+1. Импортируйте проект: 
+  * Загрузите или клонируйте этот репозиторий.
+  * Откройте проект в Android Studio.
+2. Запустите приложение:
+  * Нажмите кнопку "Run" в Android Studio.
+  * Выберите эмулятор или устройство для запуска приложения.
+3. Нажмите кнопку:
+  * На экране MainActivity нажмите кнопку "Перейти к Activity 2".
+  * Вы перейдете на экран SecondActivity, где увидите фамилию Кастырин, переданную из MainActivity.
+
+# Код:
+* **MainActivity.java:**
+```package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 // Переход на Activity 2
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 // Передача фамилии в качестве параметра
-                intent.putExtra("familyName", "Кастырин"); // Замените "Ваша Фамилия" на свою фамилию
+                intent.putExtra("familyName", "Кастырин"); 
                 startActivity(intent);
             }
         });
@@ -70,8 +76,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-SecondActivity.java:
-package com.example.myapplication;
+```
+* **SecondActivity.java:**
+```package com.example.myapplication;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -100,8 +107,9 @@ public class SecondActivity extends AppCompatActivity {
     }
 }
 
-activity_main.xml:
-<?xml version="1.0" encoding="utf-8"?>
+```
+* **activity_main.xml:**
+```<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -116,8 +124,9 @@ activity_main.xml:
         android:text="@string/activity_2" />
 
 </LinearLayout>
-activity_second.xml:
-<?xml version="1.0" encoding="utf-8"?>
+```
+* **activity_second.xml:**
+```<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/second"
     android:layout_width="match_parent"
@@ -132,4 +141,4 @@ activity_second.xml:
       android:text="Кастырин" />
 
 </LinearLayout>
-   
+```
